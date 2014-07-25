@@ -54,7 +54,7 @@ public class ShellCommand {
      * perdida.
      *
      * @param command La instruccion a ejecutar en la linea de comandos
-     * @param command workingDir Ruta al directorio que se usara para ejecutar
+     * @param workingDir workingDir Ruta al directorio que se usara para ejecutar
      * la instruccion. Debe incluir '/' al final.
      */
     public void runCommand(String command, String workingDir) {
@@ -72,7 +72,7 @@ public class ShellCommand {
      * perdida.
      *
      * @param command La instruccion a ejecutar en la linea de comandos
-     * @param command workingDir Ruta al directorio que se usara para ejecutar
+     * @param workingDir workingDir Ruta al directorio que se usara para ejecutar
      * la instruccion. Debe incluir '/' al final.
      * @param runAsync 'true' si se quiere que es funcion se ejecute de manera
      * asincronica, 'false' de lo contrario.
@@ -92,7 +92,7 @@ public class ShellCommand {
      * perdida.
      *
      * @param command La instruccion a ejecutar en la linea de comandos
-     * @param command workingDir Ruta al directorio que se usara para ejecutar
+     * @param workingDir workingDir Ruta al directorio que se usara para ejecutar
      * la instruccion. Debe incluir '/' al final.
      * @param runAsync 'true' si se quiere que es funcion se ejecute de manera
      * asincronica, 'false' de lo contrario.
@@ -130,7 +130,7 @@ public class ShellCommand {
                 }
 
             } else {
-
+                System.out.println("---------CMD: "+command);
                 if (!OSName.contains("windows")) {
                     process = runtime.exec(new String[]{"bash", "-c", command});
                 } else {
@@ -171,21 +171,21 @@ public class ShellCommand {
     //            Getters / Setters
     //////////////////////////////////////////////
     /**
-     * Runtime del S.O. *
+     * @return Runtime del S.O. *
      */
     public Runtime getRuntime() {
         return runtime;
     }
 
     /**
-     * Referencia al proceso de la instruccion ejecutada *
+     * @return Referencia al proceso de la instruccion ejecutada.
      */
     public Process getProcess() {
         return process;
     }
 
     /**
-     * String que contiene la respuesta de la instruccion ejecutada
+     * @return String que contiene la respuesta de la instruccion ejecutada.
      *
      * Este metodo puede demorarce tanto como se demora la ejecucion del
      * proceso, si el comando se ejecuto de manera asincronoca.
@@ -195,7 +195,7 @@ public class ShellCommand {
     }
 
     /**
-     * String que contiene el error, si ocurrio alguno, de la instruccion
+     * @return String que contiene el error, si ocurrio alguno, de la instruccion
      * ejecutada.
      *
      * Este metodo puede demorarce tanto como se demora la ejecucion del
@@ -206,7 +206,7 @@ public class ShellCommand {
     }
 
     /**
-     * Codigo de salida de la instruccion ejecutada. Si se uso un llamado
+     * @return Codigo de salida de la instruccion ejecutada. Si se uso un llamado
      * asyncronico, se deberia verificar que que el proceso ya ha finalizado,
      * usando el metodo, hasProcessFinished
      */
@@ -215,7 +215,7 @@ public class ShellCommand {
     }
 
     /**
-     * Determina si ocurrio algun error a ejecutar la instruccion Si se uso un
+     * @return Determina si ocurrio algun error a ejecutar la instruccion Si se uso un
      * llamado asyncronico, se deberia verificar que que el proceso ya ha
      * finalizado, usando el metodo, hasProcessFinished.
      */
@@ -232,7 +232,7 @@ public class ShellCommand {
     }
 
     /**
-     * Verifica si el proceso ya ha terminado.
+     * @return Verifica si el proceso ya ha terminado.
      */
     public boolean hasProcessFinished() {
         if (process != null) {
